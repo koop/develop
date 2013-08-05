@@ -56,6 +56,8 @@ module.exports = function(grunt) {
 					'wp-includes/js/*.js',
 					'wp-includes/js/plupload/handlers.js',
 					'wp-includes/js/plupload/wp-plupload.js',
+					'wp-includes/js/tinymce/plugins/wpdialogs/js/*.js',
+					'wp-includes/js/tinymce/plugins/wpeditimage/js/*.js',
 					// Exceptions
 					'!wp-admin/js/custom-header.js', // Why? We should minify this.
 					'!wp-admin/js/farbtastic.js',
