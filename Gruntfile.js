@@ -31,6 +31,20 @@ module.exports = function(grunt) {
 				src: []
 			}
 		},
+		cssmin: {
+			core: {
+				expand: true,
+				cwd: SOURCE_DIR,
+				dest: BUILD_DIR,
+				ext: '.min.css',
+				src: [
+					'wp-admin/css/*.css',
+					'wp-includes/css/*.css',
+					// Exceptions
+					'!wp-admin/css/farbtastic.css'
+				]
+			}
+		},
 		uglify: {
 			core: {
 				expand: true,
@@ -67,11 +81,12 @@ module.exports = function(grunt) {
 	// Load tasks.
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// Default task.
-	grunt.registerTask('default', ['clean:all', 'copy:all', 'uglify:core']);
+	grunt.registerTask('default', ['clean:all', 'copy:all', 'cssmin:core', 'uglify:core']);
 
 	// Add a listener to the watch task.
 	//
