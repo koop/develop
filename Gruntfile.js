@@ -31,6 +31,27 @@ module.exports = function(grunt) {
 				src: []
 			}
 		},
+		uglify: {
+			core: {
+				expand: true,
+				cwd: SOURCE_DIR,
+				dest: BUILD_DIR,
+				ext: '.min.js',
+				src: [
+					'wp-admin/js/*.js',
+					'wp-includes/js/*.js',
+					'wp-includes/js/plupload/handlers.js',
+					'wp-includes/js/plupload/wp-plupload.js',
+					// Exceptions
+					'!wp-admin/js/custom-header.js', // Why? We should minify this.
+					'!wp-admin/js/farbtastic.js',
+					'!wp-admin/js/iris.min.js',
+					'!wp-includes/js/backbone.min.js',
+					'!wp-includes/js/swfobject.js',
+					'!wp-includes/js/underscore.min.js'
+				]
+			}
+		},
 		watch: {
 			all: {
 				files: [SOURCE_DIR + '**'],
@@ -46,10 +67,11 @@ module.exports = function(grunt) {
 	// Load tasks.
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// Default task.
-	grunt.registerTask('default', ['clean:all', 'copy:all']);
+	grunt.registerTask('default', ['clean:all', 'copy:all', 'uglify:core']);
 
 	// Add a listener to the watch task.
 	//
