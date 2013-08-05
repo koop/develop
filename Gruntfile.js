@@ -56,8 +56,7 @@ module.exports = function(grunt) {
 					'wp-includes/js/*.js',
 					'wp-includes/js/plupload/handlers.js',
 					'wp-includes/js/plupload/wp-plupload.js',
-					'wp-includes/js/tinymce/plugins/wpdialogs/js/*.js',
-					'wp-includes/js/tinymce/plugins/wpeditimage/js/*.js',
+					'wp-includes/js/tinymce/plugins/wp*/js/*.js',
 					// Exceptions
 					'!wp-admin/js/custom-header.js', // Why? We should minify this.
 					'!wp-admin/js/farbtastic.js',
@@ -71,7 +70,10 @@ module.exports = function(grunt) {
 				expand: true,
 				cwd: SOURCE_DIR,
 				dest: BUILD_DIR,
-				src: ['wp-includes/js/tinymce/plugins/**/editor_plugin_src.js'],
+				src: [
+					'wp-includes/js/tinymce/plugins/wordpress/editor_plugin_src.js',
+					'wp-includes/js/tinymce/plugins/wp*/editor_plugin_src.js'
+				],
 				// TinyMCE plugins use a nonstandard naming scheme: plugin files are named
 				// `editor_plugin_src.js`, and are compressed into `editor_plugin.js`.
 				rename: function(destBase, destPath) {
