@@ -90,7 +90,8 @@ module.exports = function(grunt) {
 				tasks: ['clean:dynamic', 'copy:dynamic'],
 				options: {
 					dot: true,
-					spawn: false
+					spawn: false,
+					interval: 2000
 				}
 			}
 		}
