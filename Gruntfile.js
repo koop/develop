@@ -104,9 +104,12 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	// Default task.
-	grunt.registerTask('default', ['clean:all', 'copy:all', 'cssmin:core',
+	// Register tasks.
+	grunt.registerTask('build', ['clean:all', 'copy:all', 'cssmin:core',
 		'uglify:core', 'uglify:tinymce']);
+
+	// Default task.
+	grunt.registerTask('default', ['build']);
 
 	// Add a listener to the watch task.
 	//
