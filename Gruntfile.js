@@ -82,7 +82,11 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			all: {
-				files: [SOURCE_DIR + '**'],
+				files: [
+					SOURCE_DIR + '**',
+					// Ignore version control directories.
+					'!' + SOURCE_DIR + '**/.{svn,git}/**'
+				],
 				tasks: ['clean:dynamic', 'copy:dynamic'],
 				options: {
 					dot: true,
