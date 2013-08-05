@@ -66,6 +66,18 @@ module.exports = function(grunt) {
 					'!wp-includes/js/swfobject.js',
 					'!wp-includes/js/underscore.min.js'
 				]
+			},
+			tinymce: {
+				expand: true,
+				cwd: SOURCE_DIR,
+				dest: BUILD_DIR,
+				src: ['wp-includes/js/tinymce/plugins/**/editor_plugin_src.js'],
+				// TinyMCE plugins use a nonstandard naming scheme: plugin files are named
+				// `editor_plugin_src.js`, and are compressed into `editor_plugin.js`.
+				rename: function(destBase, destPath) {
+					destPath = destPath.replace('/editor_plugin_src.js', '/editor_plugin.js');
+					return path.join(destBase || '', destPath);
+				}
 			}
 		},
 		watch: {
@@ -88,7 +100,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// Default task.
-	grunt.registerTask('default', ['clean:all', 'copy:all', 'cssmin:core', 'uglify:core']);
+	grunt.registerTask('default', ['clean:all', 'copy:all', 'cssmin:core',
+		'uglify:core', 'uglify:tinymce']);
 
 	// Add a listener to the watch task.
 	//
