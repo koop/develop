@@ -64,19 +64,19 @@ REV=$(cat $LAST_SYNCED_FILE)
 LATEST_REV=$(svnlook youngest $DEVELOP_REPO)
 
 syncRevision() {
-	local REV=$1
+	REV=$1
 
-	local TRUNK=$(svnlook dirs-changed -r $REV $DEVELOP_REPO | grep ^trunk/)
+	TRUNK=$(svnlook dirs-changed -r $REV $DEVELOP_REPO | grep ^trunk/)
 	if [ -z "$TRUNK" ]; then
-		local BRANCH=$(svnlook dirs-changed -r $REV $DEVELOP_REPO | grep ^branches/. | head -n 1 | awk -F'/' '{print $1"/"$2}')
+		BRANCH=$(svnlook dirs-changed -r $REV $DEVELOP_REPO | grep ^branches/. | head -n 1 | awk -F'/' '{print $1"/"$2}')
 		if [ -z "$BRANCH" ]; then
 			syncError "Commit $REV-develop has curious roots. I don't think it is trunk but I can't find a branch. Check it out please."
 		fi
 	else
-		local BRANCH=trunk
+		BRANCH=trunk
 	fi
 
-	local MIXED_ROOTS=$(svnlook dirs-changed -r $REV $DEVELOP_REPO | grep -v "^$BRANCH/")
+	MIXED_ROOTS=$(svnlook dirs-changed -r $REV $DEVELOP_REPO | grep -v "^$BRANCH/")
 	if [ ! -z "$MIXED_ROOTS" ]; then
 		syncError "Commit $REV-develop has curious roots. I think it is $BRANCH but I'm seeing mixed roots. Check it out please."
 	fi
