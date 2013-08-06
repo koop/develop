@@ -51,7 +51,7 @@ fi
 
 # Find the last synced revision.
 # This file must be set up manually (so as to be nacin-proof).
-LAST_SYNCED_FILE=$DEVELOP_REPO/.develop-rev-synced
+LAST_SYNCED_FILE="$DEVELOP_REPO/.develop-rev-synced"
 if [ -f $LAST_SYNCED_FILE ]; then
 	if [ ! -s $LAST_SYNCED_FILE ]; then
 		syncError "The sync log, $LAST_SYNCED_FILE, is empty."
