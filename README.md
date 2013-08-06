@@ -35,7 +35,7 @@ The `src` directory contains the WordPress core files. You can develop against t
 ### `grunt build`
 Generates the production-optimized source in the `build` directory.
 
-### `grunt clean`
+### `grunt clean:all`
 Removes the `build` directory.
 
 ### `grunt watch`
