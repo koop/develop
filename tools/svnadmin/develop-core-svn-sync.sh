@@ -139,7 +139,7 @@ syncRevision() {
 	# Actual failures produce an exit code > 0.
 	COMMIT_ERR="$?"
 	if [ "$COMMIT_ERR" -ne 0 ]; then
-		syncError "$REV-develop failed to sync. SVN exited with a code of $COMMIT_ERR."
+		syncError "$REV-develop failed to sync. SVN exited with a code of $COMMIT_ERR. Message: $MSG. Return: $COMMIT_RESULT"
 	fi
 
 	# If there is nothing to commit, nothing is returned (but, note, exit code is 0).
