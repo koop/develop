@@ -24,16 +24,6 @@ if [ "$?" -gt 0 ]; then
 	}
 fi
 
-# Initialize our checkouts. Use some depth tricks to avoid unnecessarily checking out tags.
-if [ ! -d $DEVELOP_CO ]; then
-	svn co --depth immediates $DEVELOP_URL $DEVELOP_CO
-	svn up --ignore-externals --set-depth infinity $DEVELOP_CO/trunk $DEVELOP_CO/branches
-fi
-if [ ! -d $CORE_CO ]; then
-	svn co --depth immediates $CORE_URL $CORE_CO
-	svn up --ignore-externals --set-depth infinity $CORE_CO/trunk $CORE_CO/branches
-fi
-
 # This is designed to be run on cron. Lock the process!
 # If we have the lock for too long, start raising flags.
 LOCKFILE=$DEVELOP_REPO/sync-develop.lock
@@ -46,6 +36,16 @@ if [ -f $LOCKFILE ]; then
 	exit 0
 fi
 echo "Locked" > $LOCKFILE
+
+# Initialize our checkouts. Use some depth tricks to avoid unnecessarily checking out tags.
+if [ ! -d $DEVELOP_CO ]; then
+	svn co --depth immediates $DEVELOP_URL $DEVELOP_CO
+	svn up --ignore-externals --set-depth infinity $DEVELOP_CO/trunk $DEVELOP_CO/branches
+fi
+if [ ! -d $CORE_CO ]; then
+	svn co --depth immediates $CORE_URL $CORE_CO
+	svn up --ignore-externals --set-depth infinity $CORE_CO/trunk $CORE_CO/branches
+fi
 
 # Find the last synced revision.
 # This file must be set up manually (so as to be nacin-proof).
