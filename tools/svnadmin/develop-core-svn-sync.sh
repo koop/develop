@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# Call this from a script that sets up these variables:
+# Syncs commits from develop.svn.wordpress.org to core.svn.wordpress.org.
+#
+# Usage: Execute this from within a script that sets up these variables:
 # * SVNUSER and SVNPASS, the user for core.svn write operations.
-# * DEVELOP_REPO and CORE_REPO, paths to the local SVN repositories (on the filesystem). Trailing slashed.
+# * DEVELOP_REPO and CORE_REPO, paths to the local SVN repositories (on the filesystem).
 # * DEVELOP_CO and CORE_CO, paths to where working copies should be checked out. 
 # Optional:
 # * DEVELOP_URL and CORE_URL, ideally local URLs for URL-based repository operations.
