@@ -20,3 +20,21 @@ Getting Started
 3. Run `npm install`.
 4. Run `grunt setup`. This is a temporary step to pull in code that will eventually live inside of the develop repository.
 
+
+Documentation
+-------------
+
+The `src` directory contains the WordPress core files. You can develop against the `src` directory like you normally would develop against trunk.
+
+### `grunt build`
+Generates the production-optimized source in the `build` directory.
+
+### `grunt clean`
+Removes the `build` directory.
+
+### `grunt watch`
+Currently in development (like everything else), and will likely be split into several tasks. Grunt can watch files as you develop and provide instant feedback. In this case, it copies changed files over to the `build` directory. 
+
+### `grunt setup`
+A temporary task that pulls in code that will eventually live inside of the repository. Checks out a copy of WordPress core into the `src` directory.
+
