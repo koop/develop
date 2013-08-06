@@ -124,7 +124,7 @@ module.exports = function(grunt) {
 	// Add an svn task for checking out repositories.
 	grunt.registerMultiTask('svn', 'Check out a Subversion repository.', function() {
 		var done = this.async();
-		var args = ['checkout', this.data.repository];
+		var args = ['checkout', '--ignore-externals', this.data.repository];
 		if (this.data.dest) {
 			args.push(this.data.dest);
 		}
