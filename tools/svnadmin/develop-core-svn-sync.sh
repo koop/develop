@@ -10,8 +10,8 @@
 # * DEVELOP_URL and CORE_URL, ideally local URLs for URL-based repository operations.
 #   By referencing a repository in local file:/// fashion, our operations can be faster.
 
-DEVELOP_HTTP="http://develop.svn.wordpress.org"
-CORE_HTTP="http://core.svn.wordpress.org"
+DEVELOP_HTTP="https://develop.svn.wordpress.org"
+CORE_HTTP="https://core.svn.wordpress.org"
 
 # DEVELOP_URL and CORE_URL defaults to the public URLs:
 DEVELOP_URL=${DEVELOP_URL-$DEVELOP_HTTP}
@@ -124,7 +124,7 @@ syncRevision() {
 	AUTHOR=$(svnlook author -r $REV $DEVELOP_REPO)
 
 	# Append to the synced commit message
-	# "Built from http://develop.svn.wordpress.org/trunk@12345"
+	# "Built from https://develop.svn.wordpress.org/trunk@12345"
 	MSG=$(mktemp)
 	COMMIT_RESULT=$(mktemp)
 	svnlook log -r $REV "$DEVELOP_REPO" > $MSG
