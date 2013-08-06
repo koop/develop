@@ -8,13 +8,14 @@ Requirements
 ------------
 To take advantage of all of the goodies in the new repository, you'll have to install [Node.js](http://nodejs.org/) and the [Grunt CLI](http://gruntjs.com/getting-started).
 
-To install Node, you can [download and install the package](http://nodejs.org/), or you can use a package manager, like [Homebrew](http://brew.sh/).
-
-Once you've installed Node, you can install the Grunt CLI. Run `npm install -g grunt-cli`.
+* **Install Node.js:** You can [download and install the package](http://nodejs.org/) or use a package manager, like [Homebrew](http://brew.sh/).
+* **Install the Grunt CLI:** After installing Node, run `npm install -g grunt-cli` in your shell.
 
 
 Getting Started
 ---------------
+Once you've installed Node.js and the Grunt CLI, you're ready to get started.
+
 1. Clone this repository in a directory of your choice by running `git clone https://github.com/koop/develop.git`.
 2. Navigate to the directory in your shell.
 3. Run `npm install`.
