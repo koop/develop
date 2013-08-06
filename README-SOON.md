@@ -1,7 +1,12 @@
-develop.svn.wordpress.org
-=========================
+A New Structure for WordPress Core
+==================================
 
 This is the structure we plan on using for the new WordPress development repository, which will live at `develop.svn.wordpress.org`. Needless to say, it is a work in progress.
+
+
+**If you'd like to learn more about this project or provide feedback, please read [this post](http://wp.me/p2AvED-1AI).**
+
+----
 
 
 Requirements
