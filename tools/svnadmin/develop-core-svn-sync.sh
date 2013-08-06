@@ -130,6 +130,9 @@ syncRevision() {
 	svnlook log -r $REV "$DEVELOP_REPO" > $MSG
 	echo "Built from $DEVELOP_HTTP/$BRANCH@$REV" >> $MSG
 
+	# Make sure we don't override the external in wp-content/plugins
+	svn propset svn:externals "$(svn propget svn:externals $CORE_URL/$BRANCH/wp-content/plugins)" $CORE_CO/$BRANCH/wp-content/plugins
+
 	# Time to roll.
 	svn commit --non-interactive --no-auth-cache --username $SVNUSER --password $SVNPASS -F "$MSG" $CORE_CO/$BRANCH > $COMMIT_RESULT
 
